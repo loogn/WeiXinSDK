@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F62BEA6A-7819-4EDE-8683-B1B52ABBC765}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Loogn.WeiXinSDK</RootNamespace>
+    <AssemblyName>Loogn.WeiXinSDK</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Credential.cs" />
+    <Compile Include="DownloadFile.cs" />
+    <Compile Include="Followers.cs" />
+    <Compile Include="GroupInfo.cs" />
+    <Compile Include="LangType.cs" />
+    <Compile Include="MediaInfo.cs" />
+    <Compile Include="Menu\BaseButton.cs" />
+    <Compile Include="Menu\ClickButton.cs" />
+    <Compile Include="Menu\CustomMenu.cs" />
+    <Compile Include="Menu\MenuType.cs" />
+    <Compile Include="Menu\MultiButton.cs" />
+    <Compile Include="Menu\SingleButton.cs" />
+    <Compile Include="Menu\ViewButton.cs" />
+    <Compile Include="Message\BaseMsg.cs" />
+    <Compile Include="Message\EventAttendMsg.cs" />
+    <Compile Include="Message\EventBaseMsg.cs" />
+    <Compile Include="Message\EventClickMsg.cs" />
+    <Compile Include="Message\EventFansScanMsg.cs" />
+    <Compile Include="Message\EventLocationMsg.cs" />
+    <Compile Include="Message\EventType.cs" />
+    <Compile Include="Message\EventUnattendMsg.cs" />
+    <Compile Include="Message\EventUserScanMsg.cs" />
+    <Compile Include="Message\MsgType.cs" />
+    <Compile Include="Message\MyEventType.cs" />
+    <Compile Include="Message\RecBaseMsg.cs" />
+    <Compile Include="Message\RecEventBaseMsg.cs" />
+    <Compile Include="Message\RecImageMsg.cs" />
+    <Compile Include="Message\RecLinkMsg.cs" />
+    <Compile Include="Message\RecLocationMsg.cs" />
+    <Compile Include="Message\RecTextMsg.cs" />
+    <Compile Include="Message\RecVideoMsg.cs" />
+    <Compile Include="Message\RecVoiceMsg.cs" />
+    <Compile Include="Message\ReplyBaseMsg.cs" />
+    <Compile Include="Message\ReplyEmptyMsg.cs" />
+    <Compile Include="Message\ReplyImageMsg.cs" />
+    <Compile Include="Message\ReplyMusicMsg.cs" />
+    <Compile Include="Message\ReplyNewsMsg.cs" />
+    <Compile Include="Message\ReplyTextMsg.cs" />
+    <Compile Include="Message\ReplyVideoMsg.cs" />
+    <Compile Include="Message\ReplyVoiceMsg.cs" />
+    <Compile Include="Message\SendImageMsg.cs" />
+    <Compile Include="Message\SendBaseMsg.cs" />
+    <Compile Include="Message\SendMusicMsg.cs" />
+    <Compile Include="Message\SendNewsMsg.cs" />
+    <Compile Include="Message\SendTextMsg.cs" />
+    <Compile Include="Message\SendVideoMsg.cs" />
+    <Compile Include="Message\SendVoiceMsg.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QRCodeTicket.cs" />
+    <Compile Include="ReturnCode.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="WeiXin.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
