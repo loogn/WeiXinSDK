@@ -6,7 +6,17 @@ using Loogn.WeiXinSDK.Message;
 
 namespace Loogn.WeiXinSDK
 {
-    public delegate TResult MyFunc<T1,TResult>(T1 t);
+    /// <summary>
+    /// 消息事件处理委托
+    /// </summary>
+    /// <typeparam name="T1"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public delegate TResult MyFunc<T1, TResult>(T1 t);
+    /// <summary>
+    /// 微信接口API
+    /// </summary>
     public class WeiXin
     {
         static string AppID, AppSecret;
@@ -57,7 +67,6 @@ namespace Loogn.WeiXinSDK
         /// <summary>
         /// 处理用户消息和事件
         /// </summary>
-        /// <param name="hander"></param>
         /// <returns></returns>
         public static ReplyBaseMsg ReplyMsg()
         {
@@ -314,18 +323,36 @@ namespace Loogn.WeiXinSDK
         /// <returns></returns>
         public static ReturnCode CreateMenu(CustomMenu menu, string appId, string appSecret)
         {
-            string url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
-            string access_token = GetAccessToken(appId, appSecret);
-            url = url + access_token;
             var json = menu.GetJSON();
-            var retJson = Util.HttpPost2(url, json);
-            return Util.JsonTo<ReturnCode>(retJson);
+            return CreateMenu(json, appId, appSecret);
         }
 
         public static ReturnCode CreateMenu(CustomMenu menu)
         {
             CheckGlobalCredential();
             return CreateMenu(menu, AppID, AppSecret);
+        }
+
+        /// <summary>
+        /// 创建自定义菜单
+        /// </summary>
+        /// <param name="menuJSON"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static ReturnCode CreateMenu(string menuJSON, string appId, string appSecret)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
+            string access_token = GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var retJson = Util.HttpPost2(url, menuJSON);
+            return Util.JsonTo<ReturnCode>(retJson);
+        }
+
+        public static ReturnCode CreateMenu(string menuJSON)
+        {
+            CheckGlobalCredential();
+            return CreateMenu(menuJSON, AppID, AppSecret);
         }
 
         /// <summary>

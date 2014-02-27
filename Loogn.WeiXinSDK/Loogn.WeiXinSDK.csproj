@@ -49,7 +49,6 @@
     <Compile Include="Menu\BaseButton.cs" />
     <Compile Include="Menu\ClickButton.cs" />
     <Compile Include="Menu\CustomMenu.cs" />
-    <Compile Include="Menu\MenuType.cs" />
     <Compile Include="Menu\MultiButton.cs" />
     <Compile Include="Menu\SingleButton.cs" />
     <Compile Include="Menu\ViewButton.cs" />
