@@ -23,5 +23,10 @@ namespace Loogn.WeiXinSDK.Message
         /// </summary>
         public abstract MsgType MsgType { get; }
 
+        public override string ToString()
+        {
+            return Util.ToJson(this);
+        }
+
     }
 }

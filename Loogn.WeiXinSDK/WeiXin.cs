@@ -85,17 +85,23 @@ namespace Loogn.WeiXinSDK
             if (dict.ContainsKey("Event"))
             {
                 #region 接收事件消息
-                var evt = (EventType)Enum.Parse(typeof(EventType), dict["Event"]);
+                var evt = (EventType)Enum.Parse(typeof(EventType), dict["Event"].ToLower());
                 key = MsgType.Event.ToString() + "_";
                 switch (evt)
                 {
-                    case EventType.CLICK:
+                    case EventType.click:
                         {
                             var msg = new EventClickMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Click, EventKey = dict["EventKey"] };
                             replyMsg = GetReply<EventClickMsg>(key+MyEventType.Click.ToString() , msg);
                             break;
                         }
-                    case EventType.LOCATION:
+                    case EventType.view:
+                        {
+                            var msg = new EventViewMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Click, EventKey = dict["EventKey"] };
+                            replyMsg = GetReply<EventViewMsg>(key + MyEventType.View.ToString(), msg);
+                            break;
+                        }
+                    case EventType.location:
                         {
                             var msg = new EventLocationMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Location, Latitude = double.Parse(dict["Latitude"]), Longitude = double.Parse(dict["Longitude"]), Precision = double.Parse(dict["Precision"]) };
                             replyMsg = GetReply<EventLocationMsg>(key+MyEventType.Location.ToString(), msg);

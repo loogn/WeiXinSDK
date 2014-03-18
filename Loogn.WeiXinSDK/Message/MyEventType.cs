@@ -8,6 +8,7 @@ namespace Loogn.WeiXinSDK.Message
     {
         Attend,
         Click,
+        View,
         FansScan,
         Location,
         Unattend,

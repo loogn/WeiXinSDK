@@ -8,7 +8,7 @@ namespace Loogn.WeiXinSDK.Message
     {
         public override EventType Event
         {
-            get { return EventType.LOCATION; }
+            get { return EventType.location; }
         }
         /// <summary>
         /// 地理位置纬度

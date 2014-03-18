@@ -8,7 +8,7 @@ namespace Loogn.WeiXinSDK.Message
     {
         public override EventType Event
         {
-            get { return EventType.CLICK; }
+            get { return EventType.click; }
         }
 
         /// <summary>

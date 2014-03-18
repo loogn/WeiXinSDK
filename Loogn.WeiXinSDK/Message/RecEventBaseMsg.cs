@@ -1,7 +1,7 @@
 ﻿
 namespace Loogn.WeiXinSDK.Message
 {
-    public abstract class RecEventBaseMsg:BaseMsg
+    public abstract class RecEventBaseMsg : BaseMsg
     {
     }
 }

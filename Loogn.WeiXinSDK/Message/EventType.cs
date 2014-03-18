@@ -21,15 +21,19 @@ namespace Loogn.WeiXinSDK.Message
         /// <summary>
         /// 上报地理位置
         /// </summary>
-        LOCATION,
+        location,
         /// <summary>
         /// 点击自定义菜单
         /// </summary>
-        CLICK,
+        click,
         /// <summary>
         /// 进入会话
         /// </summary>
-        ENTER
+        enter,
+        /// <summary>
+        /// 查看菜单
+        /// </summary>
+        view,
 
     }
 }

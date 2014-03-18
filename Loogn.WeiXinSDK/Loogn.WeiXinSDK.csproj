@@ -61,6 +61,7 @@
     <Compile Include="Message\EventType.cs" />
     <Compile Include="Message\EventUnattendMsg.cs" />
     <Compile Include="Message\EventUserScanMsg.cs" />
+    <Compile Include="Message\EventViewMsg.cs" />
     <Compile Include="Message\MsgType.cs" />
     <Compile Include="Message\MyEventType.cs" />
     <Compile Include="Message\RecBaseMsg.cs" />
