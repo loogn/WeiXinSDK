@@ -30,6 +30,7 @@ namespace Loogn.WeiXinSDK
             HttpWebRequest myRequest;
             myRequest = WebRequest.Create(action) as HttpWebRequest;
             myRequest.Method = "POST";
+            myRequest.Timeout = 20 * 1000;
             myRequest.ContentType = "application/x-www-form-urlencoded";
             myRequest.ContentLength = data.Length;
             using (Stream newStream = myRequest.GetRequestStream())
@@ -102,6 +103,7 @@ namespace Loogn.WeiXinSDK
         {
             HttpWebRequest myRequest = WebRequest.Create(action) as HttpWebRequest;
             myRequest.Method = "GET";
+            myRequest.Timeout = 20 * 1000;
             HttpWebResponse myResponse = myRequest.GetResponse() as HttpWebResponse;
             var stream = myResponse.GetResponseStream();
             var ct = myResponse.ContentType;

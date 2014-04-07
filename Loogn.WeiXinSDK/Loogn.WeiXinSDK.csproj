@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Credential.cs" />
+    <Compile Include="ClientCredential.cs" />
     <Compile Include="DownloadFile.cs" />
     <Compile Include="Followers.cs" />
     <Compile Include="GroupInfo.cs" />
@@ -92,6 +92,7 @@
     <Compile Include="ReturnCode.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="WebCredential.cs" />
     <Compile Include="WeiXin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

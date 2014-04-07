@@ -39,7 +39,7 @@ namespace Loogn.WeiXinSDK
         /// <returns></returns>
         public static string GetAccessToken(string appId, string appSecret)
         {
-            return Credential.GetCredential(appId, appSecret).access_token ?? string.Empty;
+            return ClientCredential.GetCredential(appId, appSecret).access_token ?? string.Empty;
         }
 
         /// <summary>
@@ -444,12 +444,23 @@ namespace Loogn.WeiXinSDK
             }
         }
 
+        /// <summary>
+        /// 创建QRCode
+        /// </summary>
+        /// <param name="isTemp"></param>
+        /// <param name="scene_id"></param>
+        /// <returns></returns>
         public static QRCodeTicket CreateQRCode(bool isTemp, int scene_id)
         {
             CheckGlobalCredential();
             return CreateQRCode(isTemp, scene_id, AppID, AppSecret);
         }
 
+        /// <summary>
+        /// 得到QR图片地址
+        /// </summary>
+        /// <param name="qrcodeTicket"></param>
+        /// <returns></returns>
         public static string GetQRUrl(string qrcodeTicket)
         {
             return "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + System.Web.HttpUtility.HtmlEncode(qrcodeTicket);
@@ -803,8 +814,35 @@ namespace Loogn.WeiXinSDK
 
         #endregion
 
-        #region 授权获取用户基本信息 ????????????
+        #region 网页授权获取用户基本信息
+        /// <summary>
+        /// 得到获取code的Url
+        /// </summary>
+        /// <param name="appid">公众号的唯一标识</param>
+        /// <param name="redirect">授权后重定向的回调链接地址，请使用urlencode对链接进行处理</param>
+        /// <param name="scope">应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）</param>
+        /// <param name="state">重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值</param>
+        /// <returns></returns>
+        public static string BuildGetCodeUrl(string appid,string redirect,string scope,string state="")
+        {
+            
+            return string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect", appid, redirect, scope, state);
+        }
+        /// <summary>
+        /// 得到获取code的Url
+        /// </summary>
+        /// <param name="redirect">授权后重定向的回调链接地址，请使用urlencode对链接进行处理</param>
+        /// <param name="scope">应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）</param>
+        /// <param name="state">重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值</param>
+        /// <returns></returns>
+        public static string BuildGetCodeUrl(string redirect, string scope, string state = "")
+        {
+            CheckGlobalCredential();
+            return BuildGetCodeUrl(AppID, redirect, scope, state);
+        }
+
         #endregion
+
 
         private static void CheckGlobalCredential()
         {
