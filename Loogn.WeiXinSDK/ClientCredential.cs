@@ -44,6 +44,7 @@ namespace Loogn.WeiXinSDK
             else
             {
                 cred = Util.JsonTo<ClientCredential>(json);
+                cred.add_time = DateTime.Now;
                 creds[appId] = cred;
             }
             return cred;

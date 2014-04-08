@@ -93,6 +93,7 @@
     <Compile Include="UserInfo.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="WebCredential.cs" />
+    <Compile Include="WebUserInfo.cs" />
     <Compile Include="WeiXin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

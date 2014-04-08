@@ -42,6 +42,12 @@ namespace Loogn.WeiXinSDK
             return ClientCredential.GetCredential(appId, appSecret).access_token ?? string.Empty;
         }
 
+        public static string GetAccessToken()
+        {
+            CheckGlobalCredential();
+            return GetAccessToken(AppID, AppSecret);
+        }
+
         /// <summary>
         /// 检验signature
         /// </summary>
@@ -823,7 +829,7 @@ namespace Loogn.WeiXinSDK
         /// <param name="scope">应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）</param>
         /// <param name="state">重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值</param>
         /// <returns></returns>
-        public static string BuildGetCodeUrl(string appid,string redirect,string scope,string state="")
+        public static string BuildWebCodeUrl(string appid,string redirect,string scope,string state="")
         {
             
             return string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect", appid, redirect, scope, state);
@@ -835,12 +841,58 @@ namespace Loogn.WeiXinSDK
         /// <param name="scope">应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）</param>
         /// <param name="state">重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值</param>
         /// <returns></returns>
-        public static string BuildGetCodeUrl(string redirect, string scope, string state = "")
+        public static string BuildWebCodeUrl(string redirect, string scope, string state = "")
         {
             CheckGlobalCredential();
-            return BuildGetCodeUrl(AppID, redirect, scope, state);
+            return BuildWebCodeUrl(AppID, redirect, scope, state);
+        }
+        /// <summary>
+        /// 通过code换取网页授权access_token
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static WebCredential GetWebAccessToken(string appId, string appSecret, string code)
+        {
+            return WebCredential.GetCredential(appId, appSecret, code);
         }
 
+        /// <summary>
+        /// 通过code换取网页授权access_token
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static WebCredential GetWebAccessToken(string code)
+        {
+            CheckGlobalCredential();
+            return GetWebAccessToken(AppID, AppSecret, code);
+        }
+
+        /// <summary>
+        /// 得到网页授权用户信息
+        /// </summary>
+        /// <param name="access_token">网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同</param>
+        /// <param name="openid">用户的唯一标识</param>
+        /// <param name="lang">返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语</param>
+        /// <returns></returns>
+        public static WebUserInfo GetWebUserInfo(string access_token,string openid,  LangType lang)
+        {
+            string url = string.Format("https://api.weixin.qq.com/sns/userinfo?access_token={0}&openid={1}&lang={2}", access_token, openid, lang.ToString());
+            
+            var json = Util.HttpGet2(url);
+
+            if (json.IndexOf("errcode") > 0)
+            {
+                var ui = new WebUserInfo();
+                ui.error = Util.JsonTo<ReturnCode>(json);
+                return ui;
+            }
+            else
+            {
+                return Util.JsonTo<WebUserInfo>(json);
+            }
+        }
         #endregion
 
 
