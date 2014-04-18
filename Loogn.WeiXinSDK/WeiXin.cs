@@ -14,12 +14,16 @@ namespace Loogn.WeiXinSDK
     /// <param name="t"></param>
     /// <returns></returns>
     public delegate TResult MyFunc<T1, TResult>(T1 t);
+    public delegate void SetAccessTokenHandler(ClientCredential credential);
+    public delegate string GetAccessTokenHandler();
+
     /// <summary>
     /// 微信接口API
     /// </summary>
     public class WeiXin
     {
         static string AppID, AppSecret;
+        static object lockObj = new object();
         /// <summary>
         /// 设置全局appId和appSecret,一般只用在应用程序启动时调用一次即可
         /// </summary>
@@ -30,6 +34,18 @@ namespace Loogn.WeiXinSDK
             AppID = appId;
             AppSecret = appSecret;
         }
+        static SetAccessTokenHandler m_setHandler;
+        static GetAccessTokenHandler m_getHandler;
+        /// <summary>
+        /// 设置AccessToken缓存方法
+        /// </summary>
+        /// <param name="setHandler"></param>
+        /// <param name="getHandler"></param>
+        public static void ConfigAccessTokenCache(SetAccessTokenHandler setHandler, GetAccessTokenHandler getHandler)
+        {
+            m_setHandler = setHandler;
+            m_getHandler = getHandler;
+        }
 
         /// <summary>
         /// 得到AccessToken
@@ -39,7 +55,21 @@ namespace Loogn.WeiXinSDK
         /// <returns></returns>
         public static string GetAccessToken(string appId, string appSecret)
         {
-            return ClientCredential.GetCredential(appId, appSecret).access_token ?? string.Empty;
+            if (m_setHandler == null || m_setHandler == null)
+            {
+                throw new ArgumentNullException("setHandler,getHandler", "请先调用ConfigAccessTokenCache");
+            }
+            lock (lockObj)
+            {
+                var at = m_getHandler();
+                if (string.IsNullOrEmpty(at))
+                {
+                    var credential = ClientCredential.GetCredential(appId, appSecret);
+                    m_setHandler(credential);
+                    at = credential.access_token;
+                }
+                return at;
+            }
         }
 
         public static string GetAccessToken()
