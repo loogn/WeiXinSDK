@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Loogn.WeiXinSDK.Message.BaseMsg" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEIAAAAAAAAAEQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\BaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecBaseMsg" Collapsed="true">
+    <Position X="12.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecBaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecEventBaseMsg" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecEventBaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecImageMsg" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecImageMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecLinkMsg" Collapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEAAAAAAAAAAAAAQAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecLinkMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecLocationMsg" Collapsed="true">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAwAAAAAIAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecLocationMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecTextMsg" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecTextMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecVideoMsg" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecVideoMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecVoiceMsg" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAgQAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecVoiceMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>

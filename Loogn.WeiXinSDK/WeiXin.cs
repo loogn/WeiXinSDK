@@ -780,6 +780,18 @@ namespace Loogn.WeiXinSDK
             return Util.JsonTo<ReturnCode>(json);
         }
 
+        /// <summary>
+        /// 移动用户分组
+        /// </summary>
+        /// <param name="openid"></param>
+        /// <param name="groupid"></param>
+        /// <returns></returns>
+        public static ReturnCode MoveGroup(string openid, int groupid)
+        {
+            CheckGlobalCredential();
+            return MoveGroup(openid, groupid, AppID, AppSecret);
+        }
+
         #endregion
 
         #region 多媒体文件

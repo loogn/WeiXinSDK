@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Loogn.WeiXinSDK.Message.EventAttendMsg" Collapsed="true">
+    <Position X="8.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\EventAttendMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventBaseMsg" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Message\EventBaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventClickMsg" Collapsed="true">
+    <Position X="17.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\EventClickMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventFansScanMsg" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAACAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\EventFansScanMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventLocationMsg" Collapsed="true">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAgAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Message\EventLocationMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventUnattendMsg" Collapsed="true">
+    <Position X="15" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\EventUnattendMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventUserScanMsg" Collapsed="true">
+    <Position X="3.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAACAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\EventUserScanMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.EventViewMsg" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\EventViewMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.RecEventBaseMsg" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\RecEventBaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.BaseMsg" Collapsed="true">
+    <Position X="9.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEIAAAAAAAAAEQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\BaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>

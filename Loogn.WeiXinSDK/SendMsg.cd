@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Loogn.WeiXinSDK.Message.SendBaseMsg" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Message\SendBaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.SendVoiceMsg" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\SendVoiceMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.SendImageMsg" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\SendImageMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.SendMusicMsg" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\SendMusicMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.SendNewsMsg" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Message\SendNewsMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.SendTextMsg" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Message\SendTextMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.SendVideoMsg" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Message\SendVideoMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Loogn.WeiXinSDK.Message.BaseMsg" Collapsed="true">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEIAAAAAAAAAEQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\BaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyBaseMsg" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Message\ReplyBaseMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyEmptyMsg" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAQAAAACAAAAA=</HashCode>
+      <FileName>Message\ReplyEmptyMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyImageMsg" Collapsed="true">
+    <Position X="8.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABQAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\ReplyImageMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyMusicMsg" Collapsed="true">
+    <Position X="15.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAEAgAEAAAAAAAAAABABQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\ReplyMusicMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyNewsMsg" Collapsed="true">
+    <Position X="1.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\ReplyNewsMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyTextMsg" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\ReplyTextMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyVideoMsg" Collapsed="true">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEAAAAAAAAAAAABQAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\ReplyVideoMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loogn.WeiXinSDK.Message.ReplyVoiceMsg" Collapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABQAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Message\ReplyVoiceMsg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>
