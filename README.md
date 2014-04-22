@@ -53,5 +53,5 @@ weixinsdk
     }
     
     //作者联系方法：
-    //email:loogn_0707@127.com
+    //email:loogn_0707@126.com
     //QQ:407691511
