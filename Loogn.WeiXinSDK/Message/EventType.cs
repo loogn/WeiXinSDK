@@ -34,6 +34,10 @@ namespace Loogn.WeiXinSDK.Message
         /// 查看菜单
         /// </summary>
         view,
+        /// <summary>
+        /// 群发消息完成
+        /// </summary>
+        MASSSENDJOBFINISH
 
     }
 }

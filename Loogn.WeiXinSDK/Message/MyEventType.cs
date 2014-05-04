@@ -12,6 +12,7 @@ namespace Loogn.WeiXinSDK.Message
         FansScan,
         Location,
         Unattend,
-        UserScan
+        UserScan,
+        MASSSENDJOBFINISH,
     }
 }

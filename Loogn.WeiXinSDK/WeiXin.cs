@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Loogn.WeiXinSDK.Menu;
 using Loogn.WeiXinSDK.Message;
+using Loogn.WeiXinSDK.Mass;
 
 namespace Loogn.WeiXinSDK
 {
@@ -169,6 +170,26 @@ namespace Loogn.WeiXinSDK
                             }
                             break;
                         }
+                    case EventType.MASSSENDJOBFINISH:
+                        {
+                            var msg = new EventMassSendJobFinishMsg
+                            {
+                                CreateTime = Int64.Parse(dict["CreateTime"]),
+                                FromUserName = dict["FromUserName"],
+                                ToUserName = dict["ToUserName"],
+                                MyEventType = MyEventType.MASSSENDJOBFINISH,
+                                ErrorCount = int.Parse(dict["ErrorCount"]),
+                                FilterCount = int.Parse(dict["FilterCount"]),
+                                MsgID = int.Parse(dict["MsgID"]),
+                                SentCount = int.Parse(dict["SentCount"]),
+                                TotalCount = int.Parse(dict["TotalCount"]),
+                                Status = dict["Status"]
+                            };
+
+                            replyMsg = GetReply<EventMassSendJobFinishMsg>(key + MyEventType.MASSSENDJOBFINISH.ToString(), msg);
+                            break;
+                            
+                        }
                 }
                 #endregion
             }
@@ -298,11 +319,15 @@ namespace Loogn.WeiXinSDK
             {
                 key += MyEventType.UserScan.ToString();
             }
+            else if (type == typeof(EventMassSendJobFinishMsg))
+            {
+                key += MyEventType.MASSSENDJOBFINISH.ToString();
+            }
             else
             {
                 return;
             }
-            m_msgHandlers[key.ToLower()] =handler;
+            m_msgHandlers[key.ToLower()] = handler;
         }
 
         static ReplyBaseMsg GetReply<TMsg>(string key, TMsg msg) where TMsg : RecEventBaseMsg
@@ -351,6 +376,85 @@ namespace Loogn.WeiXinSDK
             CheckGlobalCredential();
             return SendMsg(msg, AppID, AppSecret);
         }
+
+
+        #endregion
+
+        #region 群发
+        /// <summary>
+        /// 根据分组进行群发
+        /// </summary>
+        /// <param name="mess"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public SendReturnCode SendMessByGroup(FilterMess mess, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=";
+            string access_token = GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.ToJson(mess);
+            var retJson = Util.HttpPost2(url, json);
+            return Util.JsonTo<SendReturnCode>(retJson);
+        }
+
+        /// <summary>
+        /// 根据分组进行群发
+        /// </summary>
+        /// <param name="mess"></param>
+        /// <returns></returns>
+        public SendReturnCode SendMessByGroup(FilterMess mess)
+        {
+            CheckGlobalCredential();
+            return SendMessByGroup(mess, AppID, AppSecret);
+        }
+
+        /// <summary>
+        /// 根据OpenID列表群发
+        /// </summary>
+        /// <param name="mess"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public SendReturnCode SendMessByUsers(ToUserMess mess, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=";
+            string access_token = GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.ToJson(mess);
+            var retJson = Util.HttpPost2(url, json);
+            return Util.JsonTo<SendReturnCode>(retJson);
+        }
+
+        /// <summary>
+        /// 根据OpenID列表群发
+        /// </summary>
+        /// <param name="mess"></param>
+        /// <returns></returns>
+        public SendReturnCode SendMessByUsers(ToUserMess mess)
+        {
+            CheckGlobalCredential();
+            return SendMessByUsers(mess, AppID, AppSecret);
+        }
+
+        /// <summary>
+        /// 删除群发.
+        /// 请注意，只有已经发送成功的消息才能删除删除消息只是将消息的图文详情页失效，已经收到的用户，还是能在其本地看到消息卡片。 另外，删除群发消息只能删除图文消息和视频消息，其他类型的消息一经发送，无法删除。
+        /// </summary>
+        /// <param name="msgid"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public ReturnCode DeleteMess(int msgid, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com//cgi-bin/message/mass/delete?access_token=";
+            string access_token = GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = "{\"msgid\":" + msgid.ToString() + "}";
+            var retJson = Util.HttpPost2(url, json);
+            return Util.JsonTo<ReturnCode>(retJson);
+        }
+
 
         #endregion
 
@@ -799,11 +903,11 @@ namespace Loogn.WeiXinSDK
         /// 上传多媒体文件
         /// </summary>
         /// <param name="file"></param>
-        /// <param name="type"></param>
+        /// <param name="type"> 媒体文件类型,image,voice,video,thumb,news</param>
         /// <param name="appId"></param>
         /// <param name="appSecret"></param>
         /// <returns></returns>
-        public static MediaInfo UploadMedia(string file, MediaType type, string appId, string appSecret)
+        public static MediaInfo UploadMedia(string file, string type, string appId, string appSecret)
         {
             string url = "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=";
             string access_token = GetAccessToken(appId, appSecret);
@@ -821,10 +925,62 @@ namespace Loogn.WeiXinSDK
             }
         }
 
-        public static MediaInfo UploadMedia(string file, MediaType type)
+        public static MediaInfo UploadMedia(string file, string type)
         {
             CheckGlobalCredential();
             return UploadMedia(file, type, AppID, AppSecret);
+        }
+
+        public static MediaInfo UploadVideoForMess(UploadVideoInfo videoInfo,string appId, string appSecret)
+        {
+            var url = "https://file.api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=";
+            var access_token = GetAccessToken(appId, appSecret);
+            var json = Util.HttpPost2(url, Util.ToJson(videoInfo));
+            if (json.IndexOf("errcode") > 0)
+            {
+                var mi = new MediaInfo();
+                mi.error = Util.JsonTo<ReturnCode>(json);
+                return mi;
+            }
+            else
+            {
+                return Util.JsonTo<MediaInfo>(json);
+            }
+        }
+
+        public static MediaInfo UploadVideoForMess(UploadVideoInfo videoInfo)
+        {
+            CheckGlobalCredential();
+            return UploadVideoForMess(videoInfo, AppID, AppSecret);
+        }
+
+        public static MediaInfo UploadNews(News news, string appId, string appSecret)
+        {
+            string url = "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=";
+            string access_token = GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(news));
+            if (json.IndexOf("errcode") > 0)
+            {
+                var mi = new MediaInfo();
+                mi.error = Util.JsonTo<ReturnCode>(json);
+                return mi;
+            }
+            else
+            {
+                return Util.JsonTo<MediaInfo>(json);
+            }
+        }
+
+        /// <summary>
+        /// 上传图文消息素材,用于群发
+        /// </summary>
+        /// <param name="news"></param>
+        /// <returns></returns>
+        public static MediaInfo UploadNews(News news)
+        {
+            CheckGlobalCredential();
+            return UploadNews(news, AppID, AppSecret);
         }
 
         /// <summary>
