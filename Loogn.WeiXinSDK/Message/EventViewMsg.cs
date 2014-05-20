@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
 {
     public class EventViewMsg:EventBaseMsg
     {
-        public override EventType Event
+        public override string Event
         {
-            get { return EventType.view; }
+            get { return "view"; }
         }
 
         /// <summary>

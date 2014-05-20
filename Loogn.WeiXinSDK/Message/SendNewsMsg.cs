@@ -7,9 +7,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class SendNewsMsg:SendBaseMsg
     {
-        public override MsgType msgtype
+        public override string msgtype
         {
-            get { return MsgType.news; }
+            get { return "news"; }
         }
 
         public News news { get; set; }

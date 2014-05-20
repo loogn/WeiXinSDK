@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class EventClickMsg:EventBaseMsg
     {
-        public override EventType Event
+        public override string Event
         {
-            get { return EventType.click; }
+            get { return "click"; }
         }
 
         /// <summary>

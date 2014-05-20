@@ -3,11 +3,11 @@ namespace Loogn.WeiXinSDK.Message
 {
     public abstract class EventBaseMsg : RecEventBaseMsg
     {
-        public abstract EventType Event { get; }
+        public abstract string Event { get; }
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.Event; }
+            get { return "Event"; }
         }
 
         public MyEventType MyEventType { get; set; }

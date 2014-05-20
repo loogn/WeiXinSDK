@@ -9,9 +9,9 @@ namespace Loogn.WeiXinSDK.Message
         /// <summary>
         /// 文本消息内容
         /// </summary>
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.text; }
+            get { return "text"; }
         }
 
         /// <summary>

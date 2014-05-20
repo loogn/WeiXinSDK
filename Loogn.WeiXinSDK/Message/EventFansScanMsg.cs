@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class EventFansScanMsg:EventBaseMsg
     {
-        public override EventType Event
+        public override string Event
         {
-            get { return EventType.scan; }
+            get { return "scan"; }
         }
         
         /// <summary>

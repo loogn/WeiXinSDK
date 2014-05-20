@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class SendVoiceMsg:SendBaseMsg
     {
-        public override MsgType msgtype
+        public override string msgtype
         {
-            get { return MsgType.voice; }
+            get { return "voice"; }
         }
 
         public Voice voice { get; set; }

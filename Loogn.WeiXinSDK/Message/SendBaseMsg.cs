@@ -13,7 +13,7 @@ namespace Loogn.WeiXinSDK.Message
     public abstract class SendBaseMsg
     {
         public string touser { get; set; }
-        public abstract MsgType msgtype { get; }
+        public abstract string msgtype { get; }
 
         public virtual string GetJSON()
         {

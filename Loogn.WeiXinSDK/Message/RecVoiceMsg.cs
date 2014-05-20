@@ -22,9 +22,9 @@ namespace Loogn.WeiXinSDK.Message
         /// </summary>
         public string Recognition { get; set; }
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.voice; }
+            get { return "voice"; }
         }
     }
 }

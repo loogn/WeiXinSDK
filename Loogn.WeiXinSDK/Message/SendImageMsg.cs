@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class SendImageMsg:SendBaseMsg
     {
-        public override MsgType msgtype
+        public override string msgtype
         {
-            get { return MsgType.image; }
+            get { return "image"; }
         }
 
         public Image image { get; set; }

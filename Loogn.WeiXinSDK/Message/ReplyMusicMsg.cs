@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class ReplyMusicMsg : ReplyBaseMsg
     {
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.music; }
+            get { return "music"; }
         }
 
         /// <summary>

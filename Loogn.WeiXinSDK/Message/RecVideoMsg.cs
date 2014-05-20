@@ -16,9 +16,9 @@ namespace Loogn.WeiXinSDK.Message
         /// </summary>
         public string ThumbMediaId { get; set; }
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.video; }
+            get { return "video"; }
         }
     }
 }

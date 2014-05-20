@@ -8,9 +8,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class ReplyNewsMsg : ReplyBaseMsg
     {
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.news; }
+            get { return "news"; }
         }
         /// <summary>
         /// 多条图文消息信息，默认第一个item为大图,注意，如果图文数超过10，则将会无响应

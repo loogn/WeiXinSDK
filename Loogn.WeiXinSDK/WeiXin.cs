@@ -122,41 +122,41 @@ namespace Loogn.WeiXinSDK
             if (dict.ContainsKey("Event"))
             {
                 #region 接收事件消息
-                var evt = (EventType)Enum.Parse(typeof(EventType), dict["Event"].ToLower());
-                key = MsgType.Event.ToString() + "_";
+                var evt = dict["Event"].ToLower();
+                key = "event_";
                 switch (evt)
                 {
-                    case EventType.click:
+                    case "click":
                         {
                             var msg = new EventClickMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Click, EventKey = dict["EventKey"] };
                             replyMsg = GetReply<EventClickMsg>(key+MyEventType.Click.ToString() , msg);
                             break;
                         }
-                    case EventType.view:
+                    case "view":
                         {
                             var msg = new EventViewMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Click, EventKey = dict["EventKey"] };
                             replyMsg = GetReply<EventViewMsg>(key + MyEventType.View.ToString(), msg);
                             break;
                         }
-                    case EventType.location:
+                    case "location":
                         {
                             var msg = new EventLocationMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Location, Latitude = double.Parse(dict["Latitude"]), Longitude = double.Parse(dict["Longitude"]), Precision = double.Parse(dict["Precision"]) };
                             replyMsg = GetReply<EventLocationMsg>(key+MyEventType.Location.ToString(), msg);
                             break;
                         }
-                    case EventType.scan:
+                    case "scan":
                         {
                             var msg = new EventFansScanMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.FansScan, EventKey = dict["EventKey"], Ticket = dict["Ticket"] };
                             replyMsg = GetReply<EventFansScanMsg>(key+MyEventType.FansScan.ToString(), msg);
                             break;
                         }
-                    case EventType.unsubscribe:
+                    case "unsubscribe":
                         {
                             var msg = new EventUnattendMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Unattend };
                             replyMsg = GetReply<EventUnattendMsg>(key+MyEventType.Unattend.ToString(), msg);
                             break;
                         }
-                    case EventType.subscribe:
+                    case "subscribe":
                         {
                             if (dict.ContainsKey("Ticket"))
                             {
@@ -170,7 +170,7 @@ namespace Loogn.WeiXinSDK
                             }
                             break;
                         }
-                    case EventType.MASSSENDJOBFINISH:
+                    case "masssendjobfinish":
                         {
                             var msg = new EventMassSendJobFinishMsg
                             {
@@ -196,24 +196,24 @@ namespace Loogn.WeiXinSDK
             else if (dict.ContainsKey("MsgId"))
             {
                 #region 接收普通消息
-                var msgType = (MsgType)Enum.Parse(typeof(MsgType), dict["MsgType"]);
-                key = msgType.ToString();
+                var msgType =  dict["MsgType"];
+                key = msgType;
                 switch (msgType)
                 {
-                    case MsgType.text:
+                    case "text":
                         {
                             var msg = new RecTextMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MsgId = long.Parse(dict["MsgId"]), Content = dict["Content"] };
                             replyMsg = GetReply<RecTextMsg>(key, msg);
                             break;
                         }
-                    case MsgType.image:
+                    case "image":
                         {
 
                             var msg = new RecImageMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MsgId = long.Parse(dict["MsgId"]), PicUrl = dict["PicUrl"], MediaId = dict["MediaId"] };
                             replyMsg = GetReply<RecImageMsg>(key, msg);
                             break;
                         }
-                    case MsgType.voice:
+                    case "voice":
                         {
                             string recognition;
                             dict.TryGetValue("Recognition", out recognition);
@@ -221,19 +221,19 @@ namespace Loogn.WeiXinSDK
                             replyMsg = GetReply<RecVoiceMsg>(key, msg);
                             break;
                         }
-                    case MsgType.video:
+                    case "video":
                         {
                             var msg = new RecVideoMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MsgId = long.Parse(dict["MsgId"]), ThumbMediaId = dict["ThumbMediaId"], MediaId = dict["MediaId"] };
                             replyMsg = GetReply<RecVideoMsg>(key, msg);
                             break;
                         }
-                    case MsgType.location:
+                    case "location":
                         {
                             var msg = new RecLocationMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MsgId = long.Parse(dict["MsgId"]), Label = dict["Label"], Location_X = double.Parse(dict["Location_X"]), Location_Y = double.Parse(dict["Location_Y"]), Scale = int.Parse(dict["Scale"]) };
                             replyMsg = GetReply<RecLocationMsg>(key, msg);
                             break;
                         }
-                    case MsgType.link:
+                    case "link":
                         {
                             var msg = new RecLinkMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MsgId = long.Parse(dict["MsgId"]), Description = dict["Description"], Title = dict["Title"], Url = dict["Url"] };
                             replyMsg = GetReply<RecLinkMsg>(key, msg);
@@ -258,27 +258,27 @@ namespace Loogn.WeiXinSDK
             var key = string.Empty;
             if (type == typeof(RecTextMsg))
             {
-                key = MsgType.text.ToString();
+                key = "text";
             }
             else if (type == typeof(RecImageMsg))
             {
-                key = MsgType.image.ToString();
+                key = "image";
             }
             else if (type == typeof(RecLinkMsg))
             {
-                key = MsgType.link.ToString();
+                key = "link";
             }
             else if (type == typeof(RecLocationMsg))
             {
-                key = MsgType.location.ToString();
+                key = "location";
             }
             else if (type == typeof(RecVideoMsg))
             {
-                key = MsgType.video.ToString();
+                key = "video";
             }
             else if (type == typeof(RecVoiceMsg))
             {
-                key = MsgType.voice.ToString();
+                key = "voice";
             }
             else
             {
@@ -294,7 +294,7 @@ namespace Loogn.WeiXinSDK
         public static void RegisterEventHandler<TEvent>(MyFunc<TEvent, ReplyBaseMsg> handler) where TEvent : EventBaseMsg
         {
             var type = typeof(TEvent);
-            var key = MsgType.Event.ToString() + "_";
+            var key = "event_";
             if (type == typeof(EventClickMsg))
             {
                 key += MyEventType.Click.ToString();

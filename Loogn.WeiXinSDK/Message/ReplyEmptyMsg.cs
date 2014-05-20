@@ -3,9 +3,9 @@ namespace Loogn.WeiXinSDK.Message
 {
     public class ReplyEmptyMsg:ReplyBaseMsg
     {
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.text; }
+            get { return "text"; }
         }
         public override string GetXML()
         {

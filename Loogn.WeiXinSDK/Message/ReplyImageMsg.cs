@@ -12,9 +12,9 @@ namespace Loogn.WeiXinSDK.Message
         public string MediaId { get; set; }
 
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.image; }
+            get { return "image"; }
         }
 
         protected override string GetXMLPart()

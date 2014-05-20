@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
 {
     public class EventMassSendJobFinishMsg : EventBaseMsg
     {
-        public override EventType Event
+        public override string Event
         {
-            get { return EventType.MASSSENDJOBFINISH; }
+            get { return "MASSSENDJOBFINISH"; }
         }
 
         /// <summary>

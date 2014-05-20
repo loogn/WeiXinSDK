@@ -23,9 +23,9 @@ namespace Loogn.WeiXinSDK.Message
         /// </summary>
         public string Label { get; set; }
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.location; }
+            get { return "location"; }
         }
     }
 }

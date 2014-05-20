@@ -21,7 +21,7 @@ namespace Loogn.WeiXinSDK.Message
         /// <summary>
         /// 消息类型
         /// </summary>
-        public abstract MsgType MsgType { get; }
+        public abstract string MsgType { get; }
 
         public override string ToString()
         {

@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class ReplyVideoMsg : ReplyBaseMsg
     {
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.video; }
+            get { return "video"; }
         }
 
         /// <summary>

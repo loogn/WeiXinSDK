@@ -19,9 +19,9 @@ namespace Loogn.WeiXinSDK.Message
         /// </summary>
         public string Url { get; set; }
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.link; }
+            get { return "link"; }
         }
     }
 }

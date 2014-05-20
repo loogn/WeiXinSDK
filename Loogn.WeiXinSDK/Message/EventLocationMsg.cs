@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class EventLocationMsg : EventBaseMsg
     {
-        public override EventType Event
+        public override string Event
         {
-            get { return EventType.location; }
+            get { return "location"; }
         }
         /// <summary>
         /// 地理位置纬度

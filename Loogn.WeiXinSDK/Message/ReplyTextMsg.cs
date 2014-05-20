@@ -11,9 +11,9 @@ namespace Loogn.WeiXinSDK.Message
         /// </summary>
         public string Content { get; set; }
 
-        public override MsgType MsgType
+        public override string MsgType
         {
-            get { return Message.MsgType.text; }
+            get { return "text"; }
         }
         protected override string GetXMLPart()
         {

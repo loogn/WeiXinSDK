@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class SendVideoMsg:SendBaseMsg
     {
-        public override MsgType msgtype
+        public override string msgtype
         {
-            get { return MsgType.video; }
+            get { return "video"; }
         }
 
         public Video video { get; set; }

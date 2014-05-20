@@ -6,9 +6,9 @@ namespace Loogn.WeiXinSDK.Message
     /// </summary>
     public class EventUnattendMsg : EventBaseMsg
     {
-        public override EventType Event
+        public override string Event
         {
-            get { return EventType.unsubscribe; }
+            get { return "unsubscribe"; }
         }
     }
 }
