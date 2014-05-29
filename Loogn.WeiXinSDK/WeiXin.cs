@@ -134,7 +134,7 @@ namespace Loogn.WeiXinSDK
                         }
                     case "view":
                         {
-                            var msg = new EventViewMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.Click, EventKey = dict["EventKey"] };
+                            var msg = new EventViewMsg { CreateTime = Int64.Parse(dict["CreateTime"]), FromUserName = dict["FromUserName"], ToUserName = dict["ToUserName"], MyEventType = MyEventType.View, EventKey = dict["EventKey"] };
                             replyMsg = GetReply<EventViewMsg>(key + MyEventType.View.ToString(), msg);
                             break;
                         }
@@ -322,6 +322,10 @@ namespace Loogn.WeiXinSDK
             else if (type == typeof(EventMassSendJobFinishMsg))
             {
                 key += MyEventType.MASSSENDJOBFINISH.ToString();
+            }
+            else if (type == typeof(EventViewMsg))
+            {
+                key += MyEventType.View.ToString();
             }
             else
             {
