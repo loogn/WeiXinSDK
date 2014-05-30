@@ -23,7 +23,7 @@ namespace Loogn.WeiXinSDK
     /// </summary>
     public class WeiXin
     {
-        static string AppID, AppSecret;
+        internal static string AppID, AppSecret;
         static object lockObj = new object();
         /// <summary>
         /// 设置全局appId和appSecret,一般只用在应用程序启动时调用一次即可

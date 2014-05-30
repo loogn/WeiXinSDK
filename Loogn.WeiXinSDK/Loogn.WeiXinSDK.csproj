@@ -103,6 +103,7 @@
     <Compile Include="WebCredential.cs" />
     <Compile Include="WebUserInfo.cs" />
     <Compile Include="WeiXin.cs" />
+    <Compile Include="WeiXinShop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EventMsg.cd" />
@@ -110,7 +111,9 @@
     <None Include="ReplyMsg.cd" />
     <None Include="SendMsg.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Shop\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
