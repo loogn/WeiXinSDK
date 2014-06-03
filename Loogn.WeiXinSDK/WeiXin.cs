@@ -939,6 +939,7 @@ namespace Loogn.WeiXinSDK
         {
             var url = "https://file.api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=";
             var access_token = GetAccessToken(appId, appSecret);
+            url = url + access_token;
             var json = Util.HttpPost2(url, Util.ToJson(videoInfo));
             if (json.IndexOf("errcode") > 0)
             {
@@ -1098,7 +1099,7 @@ namespace Loogn.WeiXinSDK
         #endregion
 
 
-        private static void CheckGlobalCredential()
+        internal static void CheckGlobalCredential()
         {
             if (string.IsNullOrEmpty(AppID) || string.IsNullOrEmpty(AppSecret))
             {

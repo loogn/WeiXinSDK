@@ -98,6 +98,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QRCodeTicket.cs" />
     <Compile Include="ReturnCode.cs" />
+    <Compile Include="Shop\AddDeliveryTemplateResult.cs" />
+    <Compile Include="Shop\AddGroupResult.cs" />
+    <Compile Include="Shop\AddProductResult.cs" />
+    <Compile Include="Shop\DeliveryTemplate.cs" />
+    <Compile Include="Shop\GetDeliveryTemplateListResult.cs" />
+    <Compile Include="Shop\GetDeliveryTemplateResult.cs" />
+    <Compile Include="Shop\GetGroupListResult.cs" />
+    <Compile Include="Shop\GetGroupResult.cs" />
+    <Compile Include="Shop\GetProductListResult.cs" />
+    <Compile Include="Shop\GetProductResult.cs" />
+    <Compile Include="Shop\GetPropertyListResult.cs" />
+    <Compile Include="Shop\GetSKUListResult.cs" />
+    <Compile Include="Shop\GetSubCateListResult.cs" />
+    <Compile Include="Shop\Group.cs" />
+    <Compile Include="Shop\ID_Name.cs" />
+    <Compile Include="Shop\Product.cs" />
+    <Compile Include="Shop\UpdateGroupProduct.cs" />
+    <Compile Include="Shop\UploadImgResult.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="WebCredential.cs" />
@@ -111,9 +129,7 @@
     <None Include="ReplyMsg.cd" />
     <None Include="SendMsg.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Shop\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

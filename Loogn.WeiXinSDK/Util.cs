@@ -51,6 +51,16 @@ namespace Loogn.WeiXinSDK
             }
         }
 
+        public static string HttpPost2(string action, byte[] data)
+        {
+            using (var stream = Util.HttpPost(action, data))
+            {
+                StreamReader sr = new StreamReader(stream);
+                return sr.ReadToEnd();
+            }
+        }
+
+
         public static string HttpUpload(string action, string file)
         {
             string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
