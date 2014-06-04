@@ -14,5 +14,6 @@ namespace Loogn.WeiXinSDK.Message
         Unattend,
         UserScan,
         MASSSENDJOBFINISH,
+        MerchantOrder
     }
 }

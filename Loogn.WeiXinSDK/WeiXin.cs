@@ -188,7 +188,22 @@ namespace Loogn.WeiXinSDK
 
                             replyMsg = GetReply<EventMassSendJobFinishMsg>(key + MyEventType.MASSSENDJOBFINISH.ToString(), msg);
                             break;
-                            
+                        }
+                    case "merchant_order":
+                        {
+                            var msg = new EventMerchantOrderMsg
+                            {
+                                CreateTime = Int64.Parse(dict["CreateTime"]),
+                                FromUserName = dict["FromUserName"],
+                                ToUserName = dict["ToUserName"],
+                                MyEventType = MyEventType.MerchantOrder,
+                                OrderID = dict["OrderID"],
+                                OrderStatus = int.Parse(dict["OrderStatus"]),
+                                ProductId = dict["ProductId"],
+                                SkuInfo = dict["SkuInfo"]
+                            };
+                            replyMsg = GetReply<EventMerchantOrderMsg>(key + MyEventType.MerchantOrder.ToString(), msg);
+                            break;
                         }
                 }
                 #endregion
@@ -326,6 +341,10 @@ namespace Loogn.WeiXinSDK
             else if (type == typeof(EventViewMsg))
             {
                 key += MyEventType.View.ToString();
+            }
+            else if (type == typeof(EventMerchantOrderMsg))
+            {
+                key += MyEventType.MerchantOrder.ToString();
             }
             else
             {

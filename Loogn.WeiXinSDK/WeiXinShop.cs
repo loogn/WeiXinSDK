@@ -622,7 +622,31 @@ namespace Loogn.WeiXinSDK
 
         public static void AddShelf() { }
 
-        public static void DeleteShelf() { }
+        /// <summary>
+        /// 删除货架
+        /// </summary>
+        /// <param name="shelf_id"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static ReturnCode DeleteShelf(int shelf_id, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/shelf/del?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(new { shelf_id = shelf_id }));
+            return Util.JsonTo<ReturnCode>(json);
+        }
+        /// <summary>
+        /// 删除货架
+        /// </summary>
+        /// <param name="shelf_id"></param>
+        /// <returns></returns>
+        public static ReturnCode DeleteShelf(int shelf_id)
+        {
+            WeiXin.CheckGlobalCredential();
+            return DeleteShelf(shelf_id, WeiXin.AppID, WeiXin.AppSecret); 
+        }
 
         public static void UpdateShelf() { }
 
@@ -630,19 +654,167 @@ namespace Loogn.WeiXinSDK
 
         public static void GetShelf() { }
 
-        public static void SetShelfStatus() { }
+        /// <summary>
+        /// 货架上下架
+        /// </summary>
+        /// <param name="shelf_id"></param>
+        /// <param name="status">0下架，1上架</param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static SetShelfStatusResult SetShelfStatus(int shelf_id, byte status, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/shelf/updatestatus?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(new { shelf_id = shelf_id, status = status }));
+            return Util.JsonTo<SetShelfStatusResult>(json);
+        }
+        /// <summary>
+        /// 货架上下架
+        /// </summary>
+        /// <param name="shelf_id"></param>
+        /// <param name="status">0下架，1上架</param>
+        /// <returns></returns>
+        public static SetShelfStatusResult SetShelfStatus(int shelf_id, byte status)
+        {
+            WeiXin.CheckGlobalCredential();
+            return SetShelfStatus(shelf_id, status, WeiXin.AppID, WeiXin.AppSecret);
+        }
 
         #endregion
 
         #region 订单管理接口
 
-        public static void GetOrder() { } //根据id
+        /// <summary>
+        /// 根据订单id获取订单详情
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static GetOrderResult GetOrder(string order_id,string appId,string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/order/getbyid?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(new { order_id = order_id }));
+            return Util.JsonTo<GetOrderResult>(json);
+        }
+        /// <summary>
+        /// 根据订单id获取订单详情
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <returns></returns>
+        public static GetOrderResult GetOrder(string order_id)
+        {
+            WeiXin.CheckGlobalCredential();
+            return GetOrder(order_id, WeiXin.AppID, WeiXin.AppSecret);
+        }
 
-        public static void GetOrder(int a) { } //根据订单状态、创建时间
+        /// <summary>
+        /// 根据订单状态、创建时间获取订单详情
+        /// </summary>
+        /// <param name="status"> 订单状态 2待发货，3已发货，5已完成，8维权中</param>
+        /// <param name="begintime">0不按时间筛选</param>
+        /// <param name="endtime">0不按时间筛选</param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static GetOrderListResult GetOrderList(int status, long begintime, long endtime, string appId, string appSecret)
+        {
+            string data = "";
+            if (begintime > 0 && endtime > 0)
+            {
+                data = Util.ToJson(new { status = status, begintime = begintime, endtime = endtime });
+            }
+            else if (begintime > 0)
+            {
+                data = Util.ToJson(new { status = status, begintime = begintime });
+            }
+            else
+            {
+                data = Util.ToJson(new { status = status, endtime = endtime });
+            }
+            var url = "https://api.weixin.qq.com/merchant/order/getbyfilter?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, data);
+            return Util.JsonTo<GetOrderListResult>(json);
+        }
+        /// <summary>
+        /// 根据订单状态、创建时间获取订单详情
+        /// </summary>
+        /// <param name="status">订单状态 2待发货，3已发货，5已完成，8维权中</param>
+        /// <param name="begintime">0不按时间筛选</param>
+        /// <param name="endtime">0不按时间筛选</param>
+        /// <returns></returns>
+        public static GetOrderListResult GetOrderList(int status, long begintime, long endtime)
+        {
+            WeiXin.CheckGlobalCredential();
+            return GetOrderList(status, begintime, endtime, WeiXin.AppID, WeiXin.AppSecret);
+        }
 
-        public static void SetOrderDelivery() { }
+        /// <summary>
+        /// 设置订单发货信息
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <param name="delivery_company"></param>
+        /// <param name="delivery_track_no"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static ReturnCode SetOrderDelivery(string order_id, string delivery_company, string delivery_track_no, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/order/setdelivery?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(new
+            {
+                order_id = order_id,
+                delivery_company = delivery_company,
+                delivery_track_no = delivery_track_no
+            }));
+            return Util.JsonTo<ReturnCode>(json);
+        }
+        /// <summary>
+        /// 设置订单发货信息
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <param name="delivery_company"></param>
+        /// <param name="delivery_track_no"></param>
+        /// <returns></returns>
+        public static ReturnCode SetOrderDelivery(string order_id, string delivery_company, string delivery_track_no)
+        {
+            WeiXin.CheckGlobalCredential();
+            return SetOrderDelivery(order_id, delivery_company, delivery_track_no, WeiXin.AppID, WeiXin.AppSecret);
+        }
 
-        public static void CloseOrder() { }
+        /// <summary>
+        /// 关闭订单
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static ReturnCode CloseOrder(string order_id, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/order/close?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(new { order_id = order_id}));
+            return Util.JsonTo<ReturnCode>(json);
+        }
+        /// <summary>
+        /// 关闭订单
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <returns></returns>
+        public static ReturnCode CloseOrder(string order_id)
+        {
+            WeiXin.CheckGlobalCredential();
+            return CloseOrder(order_id, WeiXin.AppID, WeiXin.AppSecret);
+        }
 
         #endregion
 
