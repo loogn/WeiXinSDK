@@ -89,6 +89,7 @@ namespace Loogn.WeiXinSDK
         /// <returns></returns>
         public static bool CheckSignature(string signature, string timestamp, string nonce, string token)
         {
+            if (string.IsNullOrEmpty(signature)) return false;
             List<string> tmpList = new List<string>(3);
             tmpList.Add(token);
             tmpList.Add(timestamp);

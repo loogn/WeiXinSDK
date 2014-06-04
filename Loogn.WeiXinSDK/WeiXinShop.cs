@@ -619,8 +619,31 @@ namespace Loogn.WeiXinSDK
         #endregion
 
         #region 货架管理接口
-
-        public static void AddShelf() { }
+        /// <summary>
+        /// 添加货架
+        /// </summary>
+        /// <param name="shelf"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static AddShelfResult AddShelf(Shelf shelf, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/shelf/add?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(shelf));
+            return Util.JsonTo<AddShelfResult>(json);
+        }
+        /// <summary>
+        /// 添加货架
+        /// </summary>
+        /// <param name="shelf"></param>
+        /// <returns></returns>
+        public static AddShelfResult AddShelf(Shelf shelf)
+        {
+            WeiXin.CheckGlobalCredential();
+            return AddShelf(shelf, WeiXin.AppID, WeiXin.AppSecret);
+        }
 
         /// <summary>
         /// 删除货架
@@ -648,11 +671,83 @@ namespace Loogn.WeiXinSDK
             return DeleteShelf(shelf_id, WeiXin.AppID, WeiXin.AppSecret); 
         }
 
-        public static void UpdateShelf() { }
+        /// <summary>
+        /// 修改货架
+        /// </summary>
+        /// <param name="shelf"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static ReturnCode UpdateShelf(Shelf shelf, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/shelf/mod?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(shelf));
+            return Util.JsonTo<ReturnCode>(json);
+        }
 
-        public static void GetShelfList() { }
+        /// <summary>
+        /// 修改货架
+        /// </summary>
+        /// <param name="shelf"></param>
+        /// <returns></returns>
+        public static ReturnCode UpdateShelf(Shelf shelf)
+        {
+            WeiXin.CheckGlobalCredential();
+            return UpdateShelf(shelf, WeiXin.AppID, WeiXin.AppSecret); 
+        }
 
-        public static void GetShelf() { }
+        /// <summary>
+        /// 获取所有货架
+        /// </summary>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static GetShelfListResult GetShelfList(string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/shelf/getall?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpGet2(url);
+            return Util.JsonTo<GetShelfListResult>(json);
+        }
+        /// <summary>
+        /// 获取所有货架
+        /// </summary>
+        /// <returns></returns>
+        public static GetShelfListResult GetShelfList()
+        {
+            WeiXin.CheckGlobalCredential();
+            return GetShelfList(WeiXin.AppID, WeiXin.AppSecret); 
+        }
+
+        /// <summary>
+        /// 根据货架id获取货架信息
+        /// </summary>
+        /// <param name="shelf_id"></param>
+        /// <param name="appId"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        public static GetShelfResult GetShelf(int shelf_id, string appId, string appSecret)
+        {
+            var url = "https://api.weixin.qq.com/merchant/shelf/getbyid?access_token=";
+            var access_token = WeiXin.GetAccessToken(appId, appSecret);
+            url = url + access_token;
+            var json = Util.HttpPost2(url, Util.ToJson(new { shelf_id = shelf_id }));
+            return Util.JsonTo<GetShelfResult>(json);
+        }
+
+        /// <summary>
+        /// 根据货架id获取货架信息
+        /// </summary>
+        /// <param name="shelf_id"></param>
+        /// <returns></returns>
+        public static GetShelfResult GetShelf(int shelf_id)
+        {
+            WeiXin.CheckGlobalCredential();
+            return GetShelf(shelf_id,WeiXin.AppID, WeiXin.AppSecret); 
+        }
 
         /// <summary>
         /// 货架上下架

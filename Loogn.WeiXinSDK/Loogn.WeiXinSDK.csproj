@@ -102,6 +102,7 @@
     <Compile Include="Shop\AddDeliveryTemplateResult.cs" />
     <Compile Include="Shop\AddGroupResult.cs" />
     <Compile Include="Shop\AddProductResult.cs" />
+    <Compile Include="Shop\AddShelfResult.cs" />
     <Compile Include="Shop\DeliveryCompany.cs" />
     <Compile Include="Shop\DeliveryTemplate.cs" />
     <Compile Include="Shop\GetDeliveryTemplateListResult.cs" />
@@ -113,6 +114,8 @@
     <Compile Include="Shop\GetProductListResult.cs" />
     <Compile Include="Shop\GetProductResult.cs" />
     <Compile Include="Shop\GetPropertyListResult.cs" />
+    <Compile Include="Shop\GetShelfListResult.cs" />
+    <Compile Include="Shop\GetShelfResult.cs" />
     <Compile Include="Shop\GetSKUListResult.cs" />
     <Compile Include="Shop\GetSubCateListResult.cs" />
     <Compile Include="Shop\Group.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Shop\Order.cs" />
     <Compile Include="Shop\Product.cs" />
     <Compile Include="Shop\SetShelfStatusResult.cs" />
+    <Compile Include="Shop\Shelf.cs" />
     <Compile Include="Shop\UpdateGroupProduct.cs" />
     <Compile Include="Shop\UploadImgResult.cs" />
     <Compile Include="UserInfo.cs" />
