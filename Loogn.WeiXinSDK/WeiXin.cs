@@ -56,7 +56,7 @@ namespace Loogn.WeiXinSDK
         /// <returns></returns>
         public static string GetAccessToken(string appId, string appSecret)
         {
-            if (m_setHandler == null || m_setHandler == null)
+            if (m_setHandler == null || m_getHandler == null)
             {
                 throw new ArgumentNullException("setHandler,getHandler", "请先调用ConfigAccessTokenCache");
             }
