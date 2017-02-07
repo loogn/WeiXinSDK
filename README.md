@@ -2,9 +2,6 @@ weixinsdk
 =========
   
     //由于github在国内访问不便，源码已移到 http://git.oschina.net/loogn/WeiXinSDK
-    //作者联系方法：
-    //email:loogn_0707@126.com
-    //QQ:407691511
     
 
 微信公开帐号接口
